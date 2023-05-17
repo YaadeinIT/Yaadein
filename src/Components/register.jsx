@@ -1,6 +1,7 @@
 import { Outlet, Link } from 'react-router-dom'
 import React from "react";
 import DatePicker from "./datePicker";
+import App from "./datePicker";
 import { useState } from "react";
 import { auth } from "../firebase";
 import { doc, setDoc, getDoc } from "firebase/firestore";
@@ -96,7 +97,7 @@ const Register = () => {
                 DOB :{" "}
               </label>
               <br />
-              <DatePicker/>
+              <DatePicker/>              
             </div>
           </div>
           <div class="mb-3">
