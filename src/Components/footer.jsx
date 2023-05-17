@@ -4,16 +4,15 @@ import React from 'react'
 export default function footer(){
   let footerStyle = {
     position: "absolute",
-    top: "88.5vh",
     width: "100%",
-    backgroundColour: "red"
   }
   
   return (
-    <footer class="bg-dark text-light py-3" style={footerStyle}>
-      <p class="text-center">
-        <h5>SHIVANK . ADITYA . SHANTANU</h5> 
-      </p>
+    <footer class="bg-dark text-light py-0.1 " style={footerStyle}>
+      <div class="footer_text">
+        <h6 class="text-center">Yahi Baatein toh baad mai yaad aengi ...</h6> 
+        <p class="text-center">Shivank . Aditya . Shantanu</p>
+      </div>
     </footer>
   )
 }

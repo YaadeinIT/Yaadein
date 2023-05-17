@@ -10,7 +10,7 @@ import Register from "./Components/register";
 function App() {
   return (
     <div>
-      <Header title="YAADEIN"/>
+      <Header title="Yaadein..."/>
         <BrowserRouter>
         <Routes>
           <Route path='/' element={<Main/>}/>
