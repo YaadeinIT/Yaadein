@@ -25,10 +25,11 @@
 
 }
 
-.yaadein{
+.yaadein{ /*text*/
   -webkit-text-stroke: 2.5px rgba(255, 255, 255, 0.425);
   background: -webkit-linear-gradient(-86deg, #9bc9fd 5%, #c596eb 53%, #afeee4 91%);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-stroke: 4px transparent;
   color: #ffffff83;
 }
@@ -37,4 +38,12 @@
   color: #fff;
   background-color: #494747;
   border-color: #285e8e; 
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0; 
 }

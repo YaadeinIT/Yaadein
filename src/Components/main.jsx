@@ -3,14 +3,6 @@ import {  Link } from 'react-router-dom'
 import '../App.css'
 export default function main(){
 
-  // let divstyle = {
-  //   width: "95%",
-  //   height: "500px",
-  //   background: "transparent",
-  //   alignItems: "center",
-  //   justifyContent: "center",
-  // }
-
   return (
     <>
       <div class='image' py>

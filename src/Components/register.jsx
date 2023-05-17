@@ -49,16 +49,14 @@ const Register = () => {
   
     return (
       <div
-        class="d-flex justify-content-center border border-secondary"
+        class="d-flex justify-content-center bg-light rounded"
         style={divstyle}
       >
         <form onSubmit={signUp}>
-          <h1
+          <h1 class="display-3"
             style={{
-              textDecorationLine: `underline`,
               textAlign:'center'
-            }}
-          >
+            }}>
             REGISTER
           </h1>
           <br />
@@ -67,9 +65,9 @@ const Register = () => {
               Registration Number :{" "}
             </label>
             <br />
-            <input
+            <input 
               type="number"
-              class="form-control"
+              class="form-control registration_number"
               id="exampleInputEmail1"
               aria-describedby="emailHelp"
               pattern="[0-9]{5}"
@@ -204,11 +202,15 @@ const Register = () => {
               onChange={(e) => setPassword(e.target.value)}
             />
           </div>
-          <button type="submit" class="btn btn-primary">
+          <div class="text-center mb-3">
+          <button type="submit" class="btn btn-dark">
             Register
           </button>
-          <Link to="/">Back to Home</Link>
+          </div>
+          <div class="text-center mb-3">
+          <Link to="/" class="btn btn-outline-dark">Back to Home</Link>
          <Outlet />
+         </div>
         </form>
       </div>
     );

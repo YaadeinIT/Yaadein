@@ -9,7 +9,7 @@ import Register from "./Components/register";
 
 function App() {
   return (
-    <div>
+    <div class="bg-dark" style={{margin:"0px", paddingBottom:"20px"}}>
       <Header title="Yaadein..."/>
         <BrowserRouter>
         <Routes>
@@ -24,4 +24,3 @@ function App() {
 }
 
 export default App;
-

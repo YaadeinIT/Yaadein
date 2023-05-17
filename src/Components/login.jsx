@@ -35,13 +35,11 @@ export default function login() {
 
   return (
     
-    <div class="d-flex justify-content-center border border-secondary"
+    <div class="d-flex justify-content-center bg-light rounded"
     style={divstyle}>
       <form onSubmit={logIn}>
-        <h1 style={{
-        textDecorationLine: `underline`,
-        textAlign:'center'
-    }}>LOGIN</h1>
+        <h1 class ="display-3" style={{ textAlign:'center'}} 
+        >LOGIN</h1>
         <br />
       <div class="form-group">
             <label for="exampleInputEmail1">Email address :</label>
@@ -58,9 +56,15 @@ export default function login() {
             <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" onChange={(e)=>setPassword(e.target.value)}/>
         </div>
         <br />
-        <button type="submit" class="btn btn-primary">Submit</button>
-        <Link to="/">Back to Home</Link>
-        <Outlet />
+        <div class="text-center mb-3">
+          <button type="submit" class="btn btn-dark">
+            Login
+          </button>
+          </div>
+          <div class="text-center mb-3">
+          <Link to="/" class="btn btn-outline-dark">Back to Home</Link>
+         <Outlet />
+         </div>
         </form>
     </div>
   )
