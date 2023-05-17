@@ -1,19 +1,24 @@
-import React, { useState } from "react";
-import DatePicker from "react-date-picker";
-import "react-date-picker/dist/DatePicker.css";
+import React, { useRef, useState } from 'react';
 
-const DatePickerComponent = () => {
-  const [selectedDate, setSelectedDate] = useState(null);
+const DatePicker = () => {
+  const [date, setDate] = useState('');
+  const dateInputRef = useRef(null);
 
-  const handleDateChange = (date) => {
-    setSelectedDate(date);
-  };
+  const handleChange = (e) => {
+    setDate(e.target.value);
+  };
 
-  return (
-    <div>
-      <DatePicker selected={selectedDate} onChange={handleDateChange} />
-    </div>
-  );
+  return (
+    <div class='mb-3'>
+      <div className="form-group">
+      <input
+        type="date"
+        onChange={handleChange}
+        ref={dateInputRef}
+      />
+      </div>
+    </div>
+  );
 };
 
-export default DatePickerComponent;
+export default DatePicker;
