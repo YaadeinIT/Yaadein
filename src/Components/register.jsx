@@ -212,6 +212,9 @@ const Register = () => {
           <Link to="/" class="btn btn-outline-dark">Back to Home</Link>
          <Outlet />
          </div>
+          <Link to="/login" style={{textAlign:"center"}}>
+           <p> Already Registered? Login Here</p>
+          </Link>
         </form>
       </div>
     );
