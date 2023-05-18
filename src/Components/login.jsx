@@ -1,6 +1,6 @@
-import { Outlet, Link } from 'react-router-dom'
-import React, { useState } from 'react'
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { Outlet, Link , useNavigate} from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
+import { onAuthStateChanged, signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from '../firebase';
 /* eslint-disable */
 
@@ -14,6 +14,7 @@ export default function login() {
       };
     const [email,setEmail] = useState();
     const [password, setPassword] = useState();
+    const navigate = useNavigate();
     
     // const auth = getAuth();
     const logIn = async(e)=>{
@@ -23,6 +24,7 @@ export default function login() {
         // Signed in 
         const user = userCredential.user;
         console.log("Yessssss");
+        return navigate('/dashboard',{replace:true});
         // ...
       })
       .catch((error) => {
@@ -31,6 +33,9 @@ export default function login() {
         console.log(errorMessage);
       });
     }
+
+    
+    
 
 
   return (

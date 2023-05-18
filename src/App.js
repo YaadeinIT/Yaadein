@@ -5,6 +5,7 @@ import Main from "./Components/main";
 import Footer from "./Components/footer";
 import Login from "./Components/login";
 import Register from "./Components/register";
+import Dashboard from './Components/dashboard';
 
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
           <Route path='/' element={<Main/>}/>
           <Route path='login' element={<Login/>}/>
           <Route path='register' element={<Register/>}/>
+          <Route path='dashboard' element={<Dashboard/>}/>
         </Routes>
        </BrowserRouter>
         <Footer/>
