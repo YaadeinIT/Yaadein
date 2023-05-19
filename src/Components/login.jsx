@@ -32,6 +32,10 @@ export default function login() {
       });
     }
 
+    firebase.auth().onAuthStateChanged(user => {
+      user ? null : history.push("/login");
+      renderApp();
+   });
 
   return (
     
