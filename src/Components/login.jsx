@@ -1,7 +1,7 @@
-import { Outlet, Link } from 'react-router-dom'
-import React, { useState } from 'react'
-import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from '../firebase';
+import { Outlet, Link , useNavigate} from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
+import { onAuthStateChanged, signInWithEmailAndPassword } from "firebase/auth";
+import { auth} from '../firebase';
 /* eslint-disable */
 
 export default function login() {
@@ -14,6 +14,7 @@ export default function login() {
       };
     const [email,setEmail] = useState();
     const [password, setPassword] = useState();
+    const navigate = useNavigate();
     
     // const auth = getAuth();
     const logIn = async(e)=>{
@@ -23,6 +24,7 @@ export default function login() {
         // Signed in 
         const user = userCredential.user;
         console.log("Yessssss");
+        return navigate('/dashboard',{replace:true});
         // ...
       })
       .catch((error) => {
@@ -32,10 +34,22 @@ export default function login() {
       });
     }
 
-    firebase.auth().onAuthStateChanged(user => {
-      user ? null : history.push("/login");
-      renderApp();
-   });
+    useEffect(() => {
+      const listen = onAuthStateChanged(auth, (user) => {
+        if (user) {
+          return navigate("/login", { replace: true });
+        }
+        else{
+          return navigate("/register", { replace: true });
+        }
+      });
+      return () => {
+        listen();
+      };
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }
+    ,[]);
+
 
   return (
     
@@ -65,10 +79,13 @@ export default function login() {
             Login
           </button>
           </div>
-          <div class="text-center mb-3">
+          <div class="text-center mb-3 d-flex flex-column">
           <Link to="/" class="btn btn-outline-dark">Back to Home</Link>
-         <Outlet />
+           <Outlet />
          </div>
+         <Link to="/register" style={{textAlign:"center"}}>
+          <p> Not Registered? Register Here</p>
+        </Link>
         </form>
     </div>
   )

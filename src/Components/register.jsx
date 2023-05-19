@@ -258,6 +258,9 @@ const Register = (props) => {
           </Link>
           <Outlet />
         </div>
+          <Link to="/login" style={{textAlign:"center"}}>
+           <p> Already Registered? Login Here</p>
+          </Link>
       </form>
     </div>
   );
