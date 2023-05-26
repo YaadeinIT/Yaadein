@@ -1,6 +1,6 @@
 import React from "react";
 
-const Card = () => {
+const Card = (props) => {
   return (
     <>
       <section class="vh-100" style={{ backgroundColor: "#f4f5f7" }}>
@@ -22,34 +22,34 @@ const Card = () => {
                       class="img-fluid my-5"
                       style={{ width: "80px;" }}
                     />
-                    <h5 style={{ color: "black" }}>Marie Horwitz</h5>
-                    <p style={{ color: "black" }}>Web Designer</p>
+                    <h5 style={{ color: "black" }}>{props.name}</h5>
+                    <p style={{ color: "black" }}>{props.bio}</p>
                     <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                   </div>
                   <div class="col-md-8">
                     <div class="card-body p-4">
-                      <h6>Aditya Tiwari</h6>
+                      <h6>{props.name}</h6>
                       <hr class="mt-0 mb-4" />
                       <div class="row pt-1">
                         <div class="col-6 mb-3">
                           <h6>Email</h6>
-                          <p class="text-muted">info@example.com</p>
+                          <p class="text-muted">{props.email}</p>
                         </div>
                         <div class="col-6 mb-3">
                           <h6>Phone</h6>
-                          <p class="text-muted">123 456 789</p>
+                          <p class="text-muted">{props.phone}</p>
                         </div>
                       </div>
-                      <h6>Projects</h6>
+                      <h6>Interest/Hobbies</h6>
                       <hr class="mt-0 mb-4" />
                       <div class="row pt-1">
                         <div class="col-6 mb-3">
                           <h6>Recent</h6>
-                          <p class="text-muted">Lorem ipsum</p>
+                          <p class="text-muted">{props.interest}</p>
                         </div>
                         <div class="col-6 mb-3">
-                          <h6>Most Viewed</h6>
-                          <p class="text-muted">Dolor sit amet</p>
+                          <h6>Relationship Status</h6>
+                          <p class="text-muted">{props.relationship}</p>
                         </div>
                       </div>
                       <div class="d-flex justify-content-start">

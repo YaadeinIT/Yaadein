@@ -10,6 +10,9 @@ import Currentuser from './Components/currentuser';
 import Card from './Components/card';
 import Edit from './Components/edit';
 
+
+
+
 function App() {
   return (
     <div class="bg-dark" style={{margin:"0px", paddingBottom:"20px"}}>
@@ -21,7 +24,7 @@ function App() {
           <Route path='register' element={<Register/>}/>
           <Route path='dashboard' element={<Dashboard/>}/>
           <Route path='user' element={<Currentuser/>}/>
-          <Route path='card' element={<Card/>}/>
+          <Route path='card' element={<Card/>} />
           <Route path='edit' element={<Edit/>}/>
         </Routes>
        </BrowserRouter>

@@ -16,7 +16,7 @@ const edit = () => {
   const uid = auth.currentUser.uid;
   const run = async()=>{
     const docRef = doc(db, "users", uid);
-    const docSnap = await getDoc(docRef);
+      const docSnap = await getDoc(docRef);
     if (docSnap.exists()) {
         setName(docSnap.data()["name"]);
         setDate(docSnap.data()["date"]);
