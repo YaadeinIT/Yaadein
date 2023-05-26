@@ -6,7 +6,11 @@ import Footer from "./Components/footer";
 import Login from "./Components/login";
 import Register from "./Components/register";
 import Dashboard from './Components/dashboard';
-import Currentuser from './Components/currentuser'
+import Currentuser from './Components/currentuser';
+import Card from './Components/card';
+import Edit from './Components/edit';
+
+
 
 
 function App() {
@@ -20,6 +24,8 @@ function App() {
           <Route path='register' element={<Register/>}/>
           <Route path='dashboard' element={<Dashboard/>}/>
           <Route path='user' element={<Currentuser/>}/>
+          <Route path='card' element={<Card/>} />
+          <Route path='edit' element={<Edit/>}/>
         </Routes>
        </BrowserRouter>
         <Footer/>

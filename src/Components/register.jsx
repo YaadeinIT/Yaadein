@@ -1,13 +1,13 @@
 import { Outlet, Link, useNavigate } from "react-router-dom";
 import React from "react";
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState } from "react";
 import { auth } from "../firebase";
-import { doc, setDoc, getDoc } from "firebase/firestore";
+import { doc, setDoc } from "firebase/firestore";
 import { db } from "../firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { onAuthStateChanged } from "firebase/auth";
 
-const Register = (props) => {
+
+const Register = () => {
   const navigate = useNavigate();
   let divstyle = {
     marginTop: `5%`,
@@ -61,14 +61,14 @@ const Register = (props) => {
         setDoc(docRef, data)
           .then(() => {
             console.log("Document has been added successfully");
-            return navigate("/login", { replace: true });
+            return navigate("/", { replace: true });
           })
           .catch((error) => {
             console.log(error);
           });
       })
       .catch((error) => {
-        const errorCode = error.code;
+        // const errorCode = error.code;
         const errorMessage = error.message;
         alert(errorMessage);
         // ..
