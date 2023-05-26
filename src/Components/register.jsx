@@ -1,7 +1,5 @@
 import { Outlet, Link, useNavigate } from "react-router-dom";
 import React from "react";
-// import DatePicker from "./datePicker";
-import App from "./datePicker";
 import { useRef, useState, useEffect } from "react";
 import { auth } from "../firebase";
 import { doc, setDoc, getDoc } from "firebase/firestore";
@@ -40,7 +38,7 @@ const Register = (props) => {
   const signUp = async (e) => {
     e.preventDefault();
     if (password.length < 6) {
-      console.log("error");
+      console.log("Password Length Should be Greater Than 6");
       return;
     }
     createUserWithEmailAndPassword(auth, email, password)
@@ -63,7 +61,7 @@ const Register = (props) => {
         setDoc(docRef, data)
           .then(() => {
             console.log("Document has been added successfully");
-            return navigate("/", { replace: true });
+            return navigate("/login", { replace: true });
           })
           .catch((error) => {
             console.log(error);
@@ -131,7 +129,6 @@ const Register = (props) => {
               <div className="form-group">
                 <input type="date" onChange={handleChange} ref={dateInputRef} />
               </div>
-                  
             </div>
           </div>
         </div>

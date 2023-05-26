@@ -23,8 +23,8 @@ export default function login() {
       .then((userCredential) => {
         // Signed in 
         const user = userCredential.user;
-        console.log("Yessssss");
-        return navigate('/dashboard',{replace:true});
+        console.log("Logged In");
+        return navigate('/user',{replace:true});
         // ...
       })
       .catch((error) => {
