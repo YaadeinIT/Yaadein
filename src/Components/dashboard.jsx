@@ -48,11 +48,6 @@ export default function dashboard() {
       <h1 class="display-3 text-light" style={{ fontSize: "10vw" }}>
         WELCOME TO SE-IT
       </h1>
-      <div>
-      {data.map((item) => (
-        <div key={item.id}>{item.name}</div>
-      ))}
-      </div>
       <Link to="/">
         <p class="btn btn-light"> Logout</p>
       </Link>
