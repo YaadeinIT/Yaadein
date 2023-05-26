@@ -1,33 +1,64 @@
 import { React, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { auth } from "../firebase";
-import { doc, getDoc } from "firebase/firestore";
+import { doc, getDoc, updateDoc } from "firebase/firestore";
 import { db } from "../firebase";
+
 
 
 const edit = () => {
   /* eslint-disable */
-  const [date, setDate] = useState();
-  const [regNo, setRegNo] = useState();
-  const [name, setName] = useState();
-  const [interest, setInterest] = useState();
-  const [bio, setBio] = useState();
+  const navigate = useNavigate();
+  const [date, setDate] = useState("");
+  const [regNo, setRegNo] = useState("");
+  const [name, setName] = useState("");
+  const [interest, setInterest] = useState("");
+  const [bio, setBio] = useState("");
   
-  const uid = auth.currentUser.uid;
-  const run = async()=>{
-    const docRef = doc(db, "users", uid);
+  
+  // console.log(uid);
+  useEffect(() => {
+    const fetch = async(e) => {
+      const userid = auth.currentUser.uid;
+      const docRef = doc(db, "users", userid);
       const docSnap = await getDoc(docRef);
-    if (docSnap.exists()) {
-        setName(docSnap.data()["name"]);
-        setDate(docSnap.data()["date"]);
-        setRegNo(docSnap.data()["regNo"]);
-        setInterest(docSnap.data()["interest"]);
-        setBio(docSnap.data()["bio"]);
-      } else {
-        // docSnap.data() will be undefined in this case
-        console.log("No such document!");
-      }
-  }
+      if (docSnap.exists()) {
+          setName(docSnap.data()["name"]);
+          setDate(docSnap.data()["date"]);
+          setRegNo(docSnap.data()["regNo"]);
+          setInterest(docSnap.data()["interest"]);
+          setBio(docSnap.data()["bio"]);
+          console.log("looded!")
+        } else {
+          // docSnap.data() will be undefined in this case
+          console.log("No such document!");
+        }
+    }
+    fetch();
+
+  },[]);
+
+  const updateData = async() => {
+        
+        const docRef = doc(db, "users", uid);
+        const data = {
+          regNo,
+          name,
+          interest,
+          bio,
+          date,
+        };
+        updateDoc(docRef, data)
+          .then(() => {
+            console.log("Document has been added successfully");
+            return navigate("/", { replace: true });
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+  };
+
   return (
     <>
       <div class="container-xl px-4 mt-4">
@@ -72,6 +103,7 @@ const edit = () => {
                       type="number"
                       placeholder="Enter your Registration Number"
                       value={regNo}
+                      onChange={(e)=>{setRegNo(e.target.value)}}
                     />
                   </div>
                   {/* <!-- Form Row--> */}
@@ -87,6 +119,7 @@ const edit = () => {
                         type="text"
                         placeholder="Enter your name"
                         value={name}
+                        onChange={(e)=>{setName(e.target.value)}}
                       />
                     </div>
                   </div>
@@ -103,7 +136,8 @@ const edit = () => {
                         id="interest"
                         type="text"
                         placeholder="Enter your Interest/Hobbies"
-                        value=""
+                        value={interest}
+                        onChange={(e)=>{setInterest(e.target.value)}}
                       />
                     </div>
                     {/* <!-- Form Group (location)--> */}
@@ -118,7 +152,8 @@ const edit = () => {
                         id="Bio"
                         type="text"
                         placeholder="Enter your Bio"
-                        value=""
+                        value={bio}
+                        onChange={(e)=>{setBio(e.target.value)}}
                       />
                     </div>
                   </div>
@@ -134,7 +169,7 @@ const edit = () => {
                         id="inputPhone"
                         type="tel"
                         placeholder="Enter your phone number"
-                        value="555-123-4567"
+                        value=''
                       />
                     </div>
                   </div>
@@ -158,7 +193,7 @@ const edit = () => {
                   <br />
                   {/* <!-- Save changes button--> */}
                   <div class="d-flex justify-content-between">
-                    <button class="btn btn-primary" type="button">
+                    <button class="btn btn-primary" type="button" onClick={updateData}>
                       Save changes
                     </button>
                     <button class="btn btn-primary" type="button">
