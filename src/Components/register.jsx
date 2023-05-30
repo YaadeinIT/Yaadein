@@ -38,7 +38,7 @@ const Register = () => {
   const signUp = async (e) => {
     e.preventDefault();
     if (password.length < 6) {
-      console.log("error");
+      console.log("Password Length Should be Greater Than 6");
       return;
     }
     createUserWithEmailAndPassword(auth, email, password)
@@ -61,7 +61,7 @@ const Register = () => {
         setDoc(docRef, data)
           .then(() => {
             console.log("Document has been added successfully");
-            return navigate("/edit", { replace: true });
+            return navigate("/", { replace: true });
           })
           .catch((error) => {
             console.log(error);
@@ -129,7 +129,6 @@ const Register = () => {
               <div className="form-group">
                 <input type="date" onChange={handleChange} ref={dateInputRef} />
               </div>
-                  
             </div>
           </div>
         </div>
